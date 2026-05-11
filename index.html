@@ -1,34 +1,163 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Web3Invest — Ensemble, cultivons le web3</title>
-  <meta name="description" content="Web3Invest est un écosystème IA pour apprendre, investir et construire le futur du web3." />
-  <style>
-    :root{--bg:#050713;--panel:#0b1024cc;--text:#f8fbff;--muted:#b7c4d8;--cyan:#12e0d2;--violet:#b642ff;--orange:#d88419;--line:#ffffff22;--glow:0 0 42px #9b35ff66}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at 20% 0%,#17204a 0,#050713 35%),radial-gradient(circle at 90% 10%,#2a0d42 0,#050713 32%),#050713;color:var(--text)}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,92vw);margin:auto}.nav{position:sticky;top:0;z-index:10;background:#050713cc;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.navin{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:14px}.brand img{width:52px;height:52px;object-fit:contain}.brand strong{font-size:1.35rem}.brand span{color:var(--muted);font-size:.85rem}.links{display:flex;gap:20px;color:var(--muted);font-weight:700}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 22px;border-radius:999px;background:linear-gradient(90deg,var(--cyan),var(--violet));box-shadow:var(--glow);font-weight:900;color:white}.ghost{background:#ffffff0e;border:1px solid var(--line);box-shadow:none}.hero{padding:76px 0 50px}.heroGrid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}.eyebrow{color:var(--cyan);font-weight:900;letter-spacing:.14em;text-transform:uppercase}.h1{font-size:clamp(3rem,7vw,6.7rem);line-height:.92;margin:18px 0}.grad{background:linear-gradient(90deg,var(--cyan),#fff,var(--violet),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:1.25rem;line-height:1.7;color:var(--muted);max-width:650px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}.heroCard{position:relative;border:1px solid var(--line);border-radius:32px;overflow:hidden;background:#0d1228;box-shadow:var(--glow)}.heroCard img{width:100%;display:block}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}.stat{padding:18px;border:1px solid var(--line);border-radius:22px;background:#ffffff09}.stat b{font-size:1.55rem;color:var(--cyan)}.stat small{display:block;color:var(--muted);margin-top:4px}.section{padding:70px 0}.title{font-size:clamp(2rem,4vw,4rem);line-height:1;margin:0 0 18px}.subtitle{color:var(--muted);font-size:1.1rem;line-height:1.7;max-width:780px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}.card{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,#101733cc,#070a17cc);padding:24px;min-height:190px}.icon{font-size:2rem}.card h3{margin:18px 0 10px}.card p{color:var(--muted);line-height:1.6;margin:0}.wideImage{border:1px solid var(--line);border-radius:34px;overflow:hidden;background:#101733;margin-top:32px;box-shadow:var(--glow)}.wideImage img{width:100%;display:block}.team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}.member{border:1px solid var(--line);border-radius:28px;background:#ffffff08;overflow:hidden}.member img{width:100%;display:block}.member div{padding:18px}.member h3{margin:0}.member p{margin:6px 0 0;color:var(--muted)}.matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}.role{border:1px solid var(--line);border-radius:22px;padding:18px;background:#ffffff08}.role b{color:#fff}.role span{display:block;color:var(--muted);margin-top:7px;line-height:1.55}.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}.panel{border:1px solid var(--line);border-radius:34px;padding:32px;background:linear-gradient(135deg,#ffffff0e,#ffffff04)}.panel ul{padding-left:20px;color:var(--muted);line-height:1.85}.footer{padding:42px 0;border-top:1px solid var(--line);color:var(--muted)}@media (max-width:900px){.heroGrid,.split{grid-template-columns:1fr}.cards,.team{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.links{display:none}}@media (max-width:560px){.cards,.team,.matrix{grid-template-columns:1fr}.h1{font-size:3.1rem}.navin{height:auto;padding:14px 0}.brand span{display:none}}
-  </style>
+  <meta name="description"
+    content="Web3Invest est un écosystème IA pour apprendre, investir et construire le futur du web3." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <nav class="nav"><div class="wrap navin"><a class="brand" href="#top"><img src="assets/web3invest.png" alt="Web3Invest"><div><strong>Web3Invest</strong><br><span>Ensemble, cultivons le web3</span></div></a><div class="links"><a href="#ecosysteme">Écosystème</a><a href="#team">Team IA</a><a href="#aiaos">AIAOS</a><a href="#contact">Contact</a></div></div></nav>
 
+<body>
+  <nav class="nav">
+    <div class="wrap navin"><a class="brand" href="#top"><img src="assets/web3invest.png" alt="Web3Invest">
+        <div><strong>Web3Invest</strong><br><span>Ensemble, cultivons le web3</span></div>
+      </a>
+      <div class="links"><a href="#ecosysteme">Écosystème</a><a href="#team">Team IA</a><a href="#aiaos">AIAOS</a><a
+          href="#contact">Contact</a></div>
+    </div>
+  </nav>
+
+  <div>
+    <img width="100%" src="assets/w3i-aiaos-team-header.png" alt="Web3Invest AIAOS Header">
+  </div>
   <header id="top" class="hero wrap">
     <div class="heroGrid">
-      <div><div class="eyebrow">Web3 · IA · Trading · DeFi · Learn to Earn</div><h1 class="h1">Build. Learn.<br><span class="grad">Grow. Together.</span></h1><p class="lead">Web3Invest réunit éducation, agents IA, automatisation et culture crypto pour aider les débutants à comprendre, investir et construire le futur du web3 avec méthode.</p><div class="actions"><a class="btn" href="#team">Découvrir la team IA →</a><a class="btn ghost" href="#aiaos">Voir AIAOS</a></div><div class="stats"><div class="stat"><b>10</b><small>personas AGILE max</small></div><div class="stat"><b>4</b><small>piliers : Learn, Invest, Build, Community</small></div><div class="stat"><b>1</b><small>mission : rendre le web3 utile</small></div><div class="stat"><b>∞</b><small>agents orchestrables</small></div></div></div>
-      <div class="heroCard"><img src="assets/w3i-aiaos-team-header.png" alt="Web3Invest AIAOS Header"></div>
+      <div>
+        <div class="eyebrow">Web3 · IA · Trading · DeFi · Learn to Earn</div>
+        <h1 class="h1">Build. Learn.<br><span class="grad">Grow. Together.</span></h1>
+        <p class="lead">Web3Invest réunit éducation, agents IA, automatisation et culture crypto pour aider les
+          débutants à comprendre, investir et construire le futur du web3 avec méthode.</p>
+        <div class="actions"><a class="btn" href="#team">Découvrir la team IA →</a><a class="btn ghost"
+            href="#aiaos">Voir AIAOS</a></div>
+        <div class="stats">
+          <div class="stat"><b>10</b><small>personas AGILE max</small></div>
+          <div class="stat"><b>4</b><small>piliers : Learn, Invest, Build, Community</small></div>
+          <div class="stat"><b>1</b><small>mission : rendre le web3 utile</small></div>
+          <div class="stat"><b>∞</b><small>agents orchestrables</small></div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <section id="ecosysteme" class="section wrap"><h2 class="title">Un écosystème pour passer de curieux à acteur du web3.</h2><p class="subtitle">La plateforme combine contenus pédagogiques, onboarding communautaire, stratégies DeFi, automatisation IA et outils d’analyse pour progresser sans se perdre dans le bruit du marché.</p><div class="cards"><div class="card"><div class="icon">🎓</div><h3>Learn</h3><p>Des parcours simples pour comprendre wallets, blockchains, DeFi, sécurité et mindset.</p></div><div class="card"><div class="icon">📈</div><h3>Invest</h3><p>Une culture du risque, du capital et de la progression durable plutôt que de la hype.</p></div><div class="card"><div class="icon">🛠️</div><h3>Build</h3><p>Des briques concrètes pour construire produits, agents et automatisations web3.</p></div><div class="card"><div class="icon">💬</div><h3>Community</h3><p>Une organisation incarnée, accessible, humaine et orientée transmission.</p></div></div><div class="wideImage"><img src="assets/teamwork.png" alt="Réunion de la team Web3Invest"></div></section>
+  <section id="ecosysteme" class="section wrap">
+    <h2 class="title">Un écosystème pour passer de curieux à acteur du web3.</h2>
+    <p class="subtitle">La plateforme combine contenus pédagogiques, onboarding communautaire, stratégies DeFi,
+      automatisation IA et outils d’analyse pour progresser sans se perdre dans le bruit du marché.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🎓</div>
+        <h3>Learn</h3>
+        <p>Des parcours simples pour comprendre wallets, blockchains, DeFi, sécurité et mindset.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📈</div>
+        <h3>Invest</h3>
+        <p>Une culture du risque, du capital et de la progression durable plutôt que de la hype.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🛠️</div>
+        <h3>Build</h3>
+        <p>Des briques concrètes pour construire produits, agents et automatisations web3.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>Community</h3>
+        <p>Une organisation incarnée, accessible, humaine et orientée transmission.</p>
+      </div>
+    </div>
+    <div class="wideImage"><img src="assets/teamwork.png" alt="Réunion de la team Web3Invest"></div>
+  </section>
 
-  <section id="team" class="section wrap"><h2 class="title">La team IA Web3Invest</h2><p class="subtitle">Chaque persona possède un rôle clair, une voix, un décor et une mission. Ensemble, ils forment l’ossature narrative et opérationnelle de l’organisation.</p><div class="team"><article class="member"><img src="assets/micheline-documentaliste.png" alt="Micheline Documentaliste"><div><h3>Micheline</h3><p>Documentaliste — structure et relie la mémoire du projet.</p></div></article><article class="member"><img src="assets/claude-devops.png" alt="Claude DevOps"><div><h3>Claude</h3><p>DevOps Engineer — automatise, déploie, surveille et stabilise.</p></div></article><article class="member"><img src="assets/cindy.png" alt="Cindy Community Manager"><div><h3>Cindy</h3><p>Community Manager — rend le web3 simple, motivant et humain.</p></div></article><article class="member"><img src="assets/cedric.png" alt="Cédric CEO"><div><h3>Cédric</h3><p>CEO — vision produit, AIAOS et stratégie Web3Invest.</p></div></article></div><div class="matrix"><div class="role"><b>Synex · Product Owner</b><span>Transforme les idées en roadmap exécutable.</span></div><div class="role"><b>Nexus · Architecte SOA / IAOS</b><span>Conçoit les fondations techniques et l’orchestration des agents.</span></div><div class="role"><b>Bob · Security Advisor</b><span>Audite wallets, smart contracts et systèmes sensibles.</span></div><div class="role"><b>Elena · Juriste Web3</b><span>Suit MiCA, conformité, DAO, CGU et risques réglementaires.</span></div><div class="role"><b>Victor · Business Analyst</b><span>Analyse coûts, revenus, modèles économiques et croissance.</span></div><div class="role"><b>Kael · Trader Quant / DeFi</b><span>Explore stratégies trading, rendement et gestion du risque.</span></div><div class="role"><b>Luna · UI/UX Designer</b><span>Crée des expériences immersives web3, gaming et IA.</span></div><div class="role"><b>Micheline · Knowledge Manager</b><span>Archive, clarifie, organise et partage la connaissance.</span></div></div></section>
+  <section id="team" class="section wrap">
+    <h2 class="title">La team IA Web3Invest</h2>
+    <p class="subtitle">Chaque persona possède un rôle clair, une voix, un décor et une mission. Ensemble, ils forment
+      l’ossature narrative et opérationnelle de l’organisation.</p>
+    <div class="team">
+      <article class="member"><img src="assets/micheline-documentaliste.png" alt="Micheline Documentaliste">
+        <div>
+          <h3>Micheline</h3>
+          <p>Documentaliste — structure et relie la mémoire du projet.</p>
+        </div>
+      </article>
+      <article class="member"><img src="assets/claude-devops.png" alt="Claude DevOps">
+        <div>
+          <h3>Claude</h3>
+          <p>DevOps Engineer — automatise, déploie, surveille et stabilise.</p>
+        </div>
+      </article>
+      <article class="member"><img src="assets/cindy.png" alt="Cindy Community Manager">
+        <div>
+          <h3>Cindy</h3>
+          <p>Community Manager — rend le web3 simple, motivant et humain.</p>
+        </div>
+      </article>
+      <article class="member"><img src="assets/cedric.png" alt="Cédric CEO">
+        <div>
+          <h3>Cédric</h3>
+          <p>CEO — vision produit, AIAOS et stratégie Web3Invest.</p>
+        </div>
+      </article>
+    </div>
+    <div class="matrix">
+      <div class="role"><b>Synex · Product Owner</b><span>Transforme les idées en roadmap exécutable.</span></div>
+      <div class="role"><b>Nexus · Architecte SOA / IAOS</b><span>Conçoit les fondations techniques et l’orchestration
+          des agents.</span></div>
+      <div class="role"><b>Bob · Security Advisor</b><span>Audite wallets, smart contracts et systèmes sensibles.</span>
+      </div>
+      <div class="role"><b>Elena · Juriste Web3</b><span>Suit MiCA, conformité, DAO, CGU et risques
+          réglementaires.</span></div>
+      <div class="role"><b>Victor · Business Analyst</b><span>Analyse coûts, revenus, modèles économiques et
+          croissance.</span></div>
+      <div class="role"><b>Kael · Trader Quant / DeFi</b><span>Explore stratégies trading, rendement et gestion du
+          risque.</span></div>
+      <div class="role"><b>Luna · UI/UX Designer</b><span>Crée des expériences immersives web3, gaming et IA.</span>
+      </div>
+      <div class="role"><b>Micheline · Knowledge Manager</b><span>Archive, clarifie, organise et partage la
+          connaissance.</span></div>
+    </div>
+  </section>
 
-  <section id="aiaos" class="section wrap"><div class="split"><div class="panel"><div class="eyebrow">AIAOS</div><h2 class="title">AI Agency Operating System</h2><p class="subtitle">AIAOS est la vision produit : un système d’exploitation d’agence IA capable d’orchestrer personas, contextes, tâches, workflows et publications.</p><ul><li>Agents IA spécialisés par rôle</li><li>Orchestration des workflows et automatisations</li><li>Mémoire documentaire et contexte projet</li><li>Production de contenus, onboarding et support communautaire</li></ul><a class="btn" href="#contact">Construire avec Web3Invest →</a></div><div class="heroCard"><img src="assets/aiaos_banner.png" alt="AIAOS banner"></div></div></section>
+  <section id="aiaos" class="section wrap">
+    <div class="split">
+      <div class="panel">
+        <div class="eyebrow">AIAOS</div>
+        <h2 class="title">AI Agency Operating System</h2>
+        <p class="subtitle">AIAOS est la vision produit : un système d’exploitation d’agence IA capable d’orchestrer
+          personas, contextes, tâches, workflows et publications.</p>
+        <ul>
+          <li>Agents IA spécialisés par rôle</li>
+          <li>Orchestration des workflows et automatisations</li>
+          <li>Mémoire documentaire et contexte projet</li>
+          <li>Production de contenus, onboarding et support communautaire</li>
+        </ul><a class="btn" href="#contact">Construire avec Web3Invest →</a>
+      </div>
+      <div class="heroCard"><img src="assets/aiaos_banner.png" alt="AIAOS banner"></div>
+    </div>
+  </section>
 
-  <section class="section wrap"><h2 class="title">Le mindset : progresser étape par étape.</h2><p class="subtitle">Penser juste, analyser, planifier, tester, agir, recommencer et durer. Le trading et le web3 ne sont pas une promesse magique : ce sont des compétences à cultiver.</p><div class="wideImage"><img src="assets/success_mindset.png" alt="Success mindset Web3Invest"></div></section>
+  <section class="section wrap">
+    <h2 class="title">Le mindset : progresser étape par étape.</h2>
+    <p class="subtitle">Penser juste, analyser, planifier, tester, agir, recommencer et durer. Le trading et le web3 ne
+      sont pas une promesse magique : ce sont des compétences à cultiver.</p>
+    <div class="wideImage"><img src="assets/success_mindset.png" alt="Success mindset Web3Invest"></div>
+  </section>
 
-  <section id="contact" class="section wrap"><div class="panel"><h2 class="title">Ensemble, cultivons le web3 🌱</h2><p class="subtitle">Web3Invest aide les curieux, créateurs et organisations à comprendre les outils web3, bâtir leur écosystème IA et avancer avec une équipe d’agents spécialisés.</p><div class="actions"><a class="btn" href="mailto:contact@web3invest.fr">Contacter Web3Invest</a><a class="btn ghost" href="#top">Retour en haut</a></div></div></section>
+  <section id="contact" class="section wrap">
+    <div class="panel">
+      <h2 class="title">Ensemble, cultivons le web3 🌱</h2>
+      <p class="subtitle">Web3Invest aide les curieux, créateurs et organisations à comprendre les outils web3, bâtir
+        leur écosystème IA et avancer avec une équipe d’agents spécialisés.</p>
+      <div class="actions"><a class="btn" href="mailto:contact@web3invest.fr">Contacter Web3Invest</a><a
+          class="btn ghost" href="#top">Retour en haut</a></div>
+    </div>
+  </section>
 
-  <footer class="footer"><div class="wrap">© Web3Invest — Ensemble, cultivons le web3 · AIAOS · Build, Learn, Trading, DeFi</div></footer>
+  <footer class="footer">
+    <div class="wrap">© Web3Invest — Ensemble, cultivons le web3 · AIAOS · Build, Learn, Trading, DeFi</div>
+  </footer>
 </body>
+
 </html>
