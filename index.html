@@ -1,8 +1,329 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <title>Web3Invest - Ensemble, cultivons le web3</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Web3Invest — Ensemble, cultivons le web3</title>
+
+  <meta
+    name="description"
+    content="Web3Invest — Plateforme communautaire orientée Web3, IA, trading, DeFi et éducation."
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #09090f;
+      --bg2: #11111b;
+      --primary: #ff9f43;
+      --primary2: #ffbe76;
+      --text: #f5f6fa;
+      --muted: #a4b0be;
+      --card: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,159,67,0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,190,118,0.08), transparent 35%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    canvas {
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      width: min(92%, 820px);
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 48px;
+      box-shadow:
+        0 0 60px rgba(0,0,0,0.35),
+        0 0 120px rgba(255,159,67,0.08);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 28px;
+      color: var(--primary2);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #2ed573;
+      box-shadow: 0 0 12px #2ed573;
+      animation: pulse 2s infinite;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5rem);
+      line-height: 1;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+
+    .gradient {
+      background: linear-gradient(
+        90deg,
+        #ff9f43,
+        #ffbe76,
+        #ffd28d
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 36px;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 42px;
+    }
+
+    .pill {
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #dfe4ea;
+      font-size: 14px;
+    }
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .status {
+      color: var(--primary2);
+      font-weight: 600;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.4);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        overflow: auto;
+        padding: 24px 0;
+      }
+
+      .card {
+        padding: 32px 24px;
+      }
+
+      h1 {
+        line-height: 1.1;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
-  <body>
-    <p><strong>Web3Invest</strong> - <em>Ensemble, cultivons le web3</em></p>
-  </body>
+
+<body>
+
+  <canvas id="bg"></canvas>
+
+  <div class="container">
+    <div class="card">
+
+      <div class="badge">
+        <span class="dot"></span>
+        Infrastructure en reconstruction
+      </div>
+
+      <h1>
+        <span class="gradient">Web3Invest</span>
+      </h1>
+
+      <p class="subtitle">
+        Ensemble, cultivons le web3.<br><br>
+
+        Web3Invest prépare actuellement le retour progressif de son écosystème :
+        IA, Web3, trading, DeFi, automatisation et infrastructure open innovation.
+      </p>
+
+      <div class="stack">
+        <div class="pill">Build</div>
+        <div class="pill">Learn</div>
+        <div class="pill">Trading</div>
+        <div class="pill">DeFi</div>
+        <div class="pill">Solana</div>
+        <div class="pill">AIAOS</div>
+        <div class="pill">Agents IA</div>
+      </div>
+
+      <div class="footer">
+        <p>
+          © 2026 Web3Invest
+        </p>
+
+        <p class="status">
+          System reboot in progress...
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+
+    let w, h;
+    let particles = [];
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.alpha = Math.random() * 0.5 + 0.2;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (
+          this.x < 0 ||
+          this.x > w ||
+          this.y < 0 ||
+          this.y > h
+        ) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 190, 118, ${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 80; i++) {
+      particles.push(new Particle());
+    }
+
+    function connect() {
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a; b < particles.length; b++) {
+
+          let dx = particles[a].x - particles[b].x;
+          let dy = particles[a].y - particles[b].y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255,159,67,${0.08 - dist / 2000})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, w, h);
+
+      for (const p of particles) {
+        p.update();
+        p.draw();
+      }
+
+      connect();
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+
+</body>
 </html>
