@@ -197,7 +197,7 @@ a {
     color: var(--muted);
     font-size: 1.1rem;
     line-height: 1.7;
-    max-width: 780px
+    /* max-width: 780px; */
 }
 
 .cards {
