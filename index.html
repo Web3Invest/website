@@ -1,229 +1,526 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <!-- HTML Meta Tags -->
-  <title>Web3Invest — Ensemble, cultivons le web3</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Build, Learn, Trading, DeFi : une organisation dédiée à l’exploration du web3, des cryptos et des agents IA.">
-  
-  <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://web3invest.fr/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Web3Invest — Ensemble, cultivons le web3">
-  <meta property="og:description" content="Build, Learn, Trading, DeFi : une organisation dédiée à l’exploration du web3, des cryptos et des agents IA.">
-  <meta property="og:image" content="https://web3invest.fr/assets/w3i-og-banner.png">
-  
-  <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="twitter:domain" content="web3invest.fr">
-  <meta property="twitter:url" content="https://web3invest.fr/">
-  <meta name="twitter:title" content="Web3Invest — Ensemble, cultivons le web3">
-  <meta name="twitter:description" content="Build, Learn, Trading, DeFi : une organisation dédiée à l’exploration du web3, des cryptos et des agents IA.">
-  <meta name="twitter:image" content="https://web3invest.fr/assets/w3i-og-banner.png">
-  
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
-  <link rel="manifest" href="./site.webmanifest">
-  
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web3Invest — Ensemble, cultivons le web3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08090B;
+    --ink: #F2EFEA;
+    --ink-muted: #8B9096;
+    --contour: #333; /*#8B9096;*/
+    --gold: #DE7A1A;
+    --gold-light: #F0A94E;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C62Q00LW13"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());8
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
 
-    gtag('config', 'G-C62Q00LW13');
-  </script>
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(242,239,234,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(242,239,234,0.028) 1px, transparent 1px);
+    background-size: 42px 42px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
+  .w3i-page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 24px;
+    text-align: center;
+  }
+
+  .w3i-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin: 0 0 8px;
+  }
+
+  .w3i-logo-wrap {
+    width: min(360px, 62vw);
+    aspect-ratio: 1;
+    margin: 12px 0 8px;
+    position: relative;
+  }
+  .w3i-logo-svg { width: 100%; height: 100%; overflow: visible; display:block; }
+
+  .w3i-fill-primary { fill: var(--contour); }
+  .w3i-fill-secondary { fill: var(--gold); }
+
+  .w3i-firefly {
+    fill: var(--gold-light);
+    filter: drop-shadow(0 0 3px var(--gold-light));
+  }
+
+  .w3i-slogan {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 4.4vw, 48px);
+    letter-spacing: -0.01em;
+    margin: 18px 0 10px;
+    line-height: 1.12;
+  }
+  .w3i-slogan em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .w3i-sub {
+    font-size: 16px;
+    color: var(--ink-muted);
+    max-width: 46ch;
+    margin: 0 0 40px;
+    line-height: 1.6;
+  }
+
+  .w3i-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .w3i-btn {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 15px 30px;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  }
+  .w3i-btn-primary {
+    background: var(--gold);
+    color: #16110A;
+  }
+  .w3i-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(222,122,26,0.28);
+  }
+  .w3i-btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid rgba(242,239,234,0.28);
+    clip-path: none;
+    border-radius: 3px;
+  }
+  .w3i-btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  .w3i-footer {
+    margin-top: 56px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    opacity: .7;
+  }
+
+  .w3i-mascot {
+    position: fixed;
+    right: -30px;
+    bottom: -40px;
+    width: 240px;
+    z-index: 0;
+    opacity: 0;
+    filter: grayscale(15%) brightness(0.92) contrast(1.04);
+    animation: w3iMascotIn 1.4s ease forwards 1.2s;
+    pointer-events: none;
+    user-select: none;
+  }
+  @keyframes w3iMascotIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: .85; transform: translateY(0); }
+  }
+  @media (max-width: 720px) {
+    .w3i-mascot { width: 150px; right: -20px; bottom: -24px; }
+  }
+
+  
+
+
+  /* =========================================================
+     LOGO — timeline unique
+     0.00 → 1.00 s : barre centrale
+     1.00 → 1.58 s : nodes, sens horaire depuis le haut
+     1.62 → 2.20 s : arêtes extérieures
+     2.22 → 2.62 s : structure principale
+     ========================================================= */
+
+  .w3i-bar,
+  .w3i-node,
+  .w3i-edge,
+  .w3i-primary-group {
+    opacity: 0;
+  }
+
+  .w3i-bar {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transform-box: fill-box;
+    animation: w3iBar 1s linear forwards;
+  }
+
+  .w3i-node {
+    transform: scale(.3);
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: w3iNode .18s cubic-bezier(.2, .9, .3, 1.35) forwards;
+  }
+
+  /* Haut → haut-droite → bas-droite → bas → bas-gauche → haut-gauche */
+  .w3i-node-3 { animation-delay: 1.00s; }
+
+  .w3i-node-4 { animation-delay: 1.08s; }
+  .w3i-node-5 { animation-delay: 1.16s; }
+
+  .w3i-node-0 { animation-delay: 1.24s; }
+  .w3i-node-1 { animation-delay: 1.32s; }
+  .w3i-node-2 { animation-delay: 1.40s; }
+  
+
+  .w3i-edge {
+    animation: w3iEdge .22s ease-out forwards;
+  }
+
+  .w3i-edge-0 { animation-delay: 1.62s; }
+  .w3i-edge-1 { animation-delay: 1.70s; }
+  .w3i-edge-2 { animation-delay: 1.78s; }
+
+  .w3i-edge-3 { animation-delay: 1.62s; }
+  .w3i-edge-4 { animation-delay: 1.70s; }
+  .w3i-edge-5 { animation-delay: 1.78s; }
+
+  .w3i-primary-group {
+    animation: w3iPrimary .40s ease-out 2.22s forwards;
+  }
+
+  @keyframes w3iBar {
+    0% {
+      opacity: 1;
+      transform: scaleX(0);
+      fill: #fff;
+    }
+    92% {
+      opacity: 1;
+      transform: scaleX(.92);
+      fill: #fff;
+    }
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+      fill: var(--gold);
+    }
+  }
+
+  @keyframes w3iNode {
+    0% {
+      opacity: 0;
+      transform: scale(.3);
+      fill: #fff;
+    }
+    55% {
+      opacity: 1;
+      transform: scale(1.18);
+      fill: #fff;
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      fill: var(--gold);
+    }
+  }
+
+  @keyframes w3iEdge {
+    0% {
+      opacity: 0;
+      fill: #fff;
+    }
+    45% {
+      opacity: 1;
+      fill: #fff;
+    }
+    100% {
+      opacity: 1;
+      fill: var(--gold);
+    }
+  }
+
+  @keyframes w3iPrimary {
+    0% {
+      opacity: 0;
+      fill: #fff;
+    }
+    100% {
+      opacity: 1;
+      fill: var(--contour);
+    }
+  }
+
+  /* Les lucioles utilisent uniquement SMIL dans le SVG.
+     Pas de seconde animation CSS concurrente. */
+  .w3i-firefly {
+    fill: var(--gold-light);
+    opacity: 0;
+    filter: drop-shadow(0 0 3px var(--gold-light));
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    .w3i-bar,
+    .w3i-node,
+    .w3i-edge,
+    .w3i-primary-group,
+    .w3i-mascot {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .w3i-firefly {
+      display: none;
+    }
+  }
+
+</style>
 </head>
-
 <body>
-  <nav class="nav">
-    <div class="wrap navin"><a class="brand" href="#top"><img src="assets/w3i-bubble-logo.png" alt="Web3Invest">
-        <div><strong>Web3Invest</strong><br><span>Ensemble, cultivons le web3</span></div>
-      </a>
-      <div class="links"><a href="#ecosysteme">Écosystème</a><a href="#team">Team IA</a><a href="#aiaos">AIAOS</a><a
-          href="#contact">Contact</a></div>
-    </div>
-  </nav>
 
-  <div>
-    <a href="#contact"><img width="100%" src="assets/w3i-aiaos-team-header.png" alt="Web3Invest AIAOS Header"></a>
-  </div>
-<!--
-  <header id="top" class="hero wrap">
-    <div class="heroGrid">
-      <div>
-        <div class="eyebrow">Web3 · IA · Trading · DeFi · Learn to Earn</div>
-        <h1 class="h1">Build. Learn.<br><span class="grad">Grow. Together.</span></h1>
-        <p class="lead">Web3Invest réunit éducation, agents IA, automatisation et culture crypto pour aider les
-          débutants à comprendre, investir et construire le futur du web3 avec méthode.</p>
-        <div class="actions"><a class="btn" href="#team">Découvrir la team IA →</a><a class="btn ghost"
-            href="#aiaos">Voir AIAOS</a></div>
-        <div class="stats">
-          <div class="stat"><b>10</b><small>personas AGILE max</small></div>
-          <div class="stat"><b>4</b><small>piliers : Learn, Invest, Build, Community</small></div>
-          <div class="stat"><b>1</b><small>mission : rendre le web3 utile</small></div>
-          <div class="stat"><b>∞</b><small>agents orchestrables</small></div>
-        </div>
-      </div>
-    </div>
-  </header>
--->
-  <header id="top" class="hero wrap">
-    <div class="heroGrid">
-      <div>
-        <div class="eyebrow">Web3 · IA · Trading · DeFi · Learn to Earn</div>
-        <h1 class="h1">Build. Learn.<br><span class="grad">Grow. Together.</span></h1>
-      </div>
-      <div class="wideImage"><img src="assets/aiaos-core-overview.png" alt="AIAOS Core overview"></div>
-    </div>
-  </header>
+  <img class="w3i-mascot" src="mascot_final.webp" alt="" aria-hidden="true">
 
-  <div id="ecosysteme">
-    <img width="100%" src="assets/aiaos-core-overview.png" alt="AIAOS Core overview">
-  </div>
-  
-  <section class="section wrap">
-    <h2 class="title">Un écosystème pour passer de curieux à acteur du web3.</h2>
-    <p class="subtitle">
-      La plateforme combine contenus pédagogiques, onboarding communautaire, stratégies DeFi, 
-      automatisation IA et outils d’analyse pour progresser sans se perdre dans le bruit du marché.
+  <main class="w3i-page">
+    <p class="w3i-eyebrow">Web3Invest · Rouen, Normandie</p>
+
+    <div class="w3i-logo-wrap">
+      <svg class="w3i-logo-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="w3i-ff-bar-0" d="M257.0,-83.0 L257.0,257.0" fill="none"/><path id="w3i-ff-bar-1" d="M551.4,87.0 L257.0,257.0" fill="none"/><path id="w3i-ff-bar-2" d="M551.4,427.0 L257.0,257.0" fill="none"/><path id="w3i-ff-bar-3" d="M257.0,597.0 L257.0,257.0" fill="none"/><path id="w3i-ff-bar-4" d="M-37.4,427.0 L257.0,257.0" fill="none"/><path id="w3i-ff-bar-5" d="M-37.4,87.0 L257.0,257.0" fill="none"/><path id="w3i-ff-node-0" d="M257.0,-83.0 L257,116" fill="none"/><path id="w3i-ff-node-1" d="M551.4,87.0 L380,187" fill="none"/><path id="w3i-ff-node-2" d="M551.4,427.0 L380,328" fill="none"/><path id="w3i-ff-node-3" d="M257.0,597.0 L257,400" fill="none"/><path id="w3i-ff-node-4" d="M-37.4,427.0 L135,329" fill="none"/><path id="w3i-ff-node-5" d="M-37.4,87.0 L135,187" fill="none"/><path id="w3i-ff-edge-0" d="M87.0,-37.4 L121.5,22.3" fill="none"/><path id="w3i-ff-edge-1" d="M427.0,-37.4 L392.5,22.3" fill="none"/><path id="w3i-ff-edge-2" d="M597.0,257.0 L528.0,257.0" fill="none"/><path id="w3i-ff-edge-3" d="M427.0,551.4 L392.5,491.7" fill="none"/><path id="w3i-ff-edge-4" d="M87.0,551.4 L121.5,491.7" fill="none"/><path id="w3i-ff-edge-5" d="M-83.0,257.0 L-14.0,257.0" fill="none"/>
+        </defs>
+
+        <g class="w3i-bar"><path class="w3i-fill-secondary" d="M196.4,269.3C196.1,270.1 196.0,274.7 196.2,279.6L196.5,288.5L257.5,288.5L318.5,288.5L318.5,278.5L318.5,268.5L257.7,268.2C207.7,268.0 196.9,268.2 196.4,269.3Z"/></g>
+        <g class="w3i-node w3i-node-0"><path class="w3i-fill-secondary" d="M249.0,100.9L240.5,105.7L240.5,116.0L240.5,126.3L249.0,131.3L257.4,136.3L262.4,133.6C265.1,132.1 269.1,129.7 271.2,128.4L275.1,125.9L274.8,115.8L274.5,105.6L266.2,100.8C261.6,98.2 257.8,96.0 257.7,96.0C257.6,96.0 253.7,98.2 249.0,100.9Z"/></g><g class="w3i-node w3i-node-1"><path class="w3i-fill-secondary" d="M371.2,172.2L362.9,177.1L363.2,187.2L363.5,197.3L371.9,202.3L380.4,207.3L385.4,204.5C388.2,202.9 392.2,200.6 394.3,199.3L398.1,196.9L397.8,186.8L397.5,176.6L389.2,171.8C384.6,169.2 380.5,167.0 380.2,167.1C379.8,167.1 375.8,169.4 371.2,172.2Z"/></g><g class="w3i-node w3i-node-2"><path class="w3i-fill-secondary" d="M370.7,314.5L362.9,319.1L363.2,329.2L363.5,339.3L371.5,344.1C375.9,346.8 380.0,348.9 380.5,348.9C381.1,348.9 385.1,346.8 389.5,344.1L397.5,339.3L397.8,329.2L398.1,319.1L390.3,314.5C386.0,312.0 381.6,310.0 380.5,310.0C379.4,310.0 375.0,312.0 370.7,314.5Z"/></g><g class="w3i-node w3i-node-3"><path class="w3i-fill-secondary" d="M247.7,385.5L239.9,390.1L240.2,400.3L240.5,410.4L249.0,415.4L257.4,420.4L262.4,417.6C265.1,416.1 269.1,413.7 271.2,412.4L275.0,410.0L275.0,400.0L275.0,390.0L267.3,385.5C263.0,383.0 258.6,381.0 257.5,381.0C256.4,381.0 252.0,383.0 247.7,385.5Z"/></g><g class="w3i-node w3i-node-4"><path class="w3i-fill-secondary" d="M126.0,313.9L117.5,318.7L117.5,329.0L117.5,339.3L125.9,344.3L134.4,349.3L138.8,346.9C141.3,345.6 145.3,343.3 147.7,341.8L152.1,339.0L151.8,328.8L151.5,318.6L143.2,313.8C138.6,311.2 134.8,309.0 134.7,309.0C134.6,309.0 130.7,311.2 126.0,313.9Z"/></g><g class="w3i-node w3i-node-5"><path class="w3i-fill-secondary" d="M126.0,171.9L117.5,176.7L117.5,187.0L117.5,197.3L126.0,202.3L134.4,207.3L139.4,204.6C142.1,203.1 146.1,200.7 148.2,199.4L152.1,196.9L151.8,186.8L151.5,176.6L143.2,171.8C138.6,169.2 134.8,167.0 134.7,167.0C134.6,167.0 130.7,169.2 126.0,171.9Z"/></g>
+        <g class="w3i-edge w3i-edge-0"><path class="w3i-fill-secondary" d="M204.0,33.6C174.4,50.8 169.6,53.6 107.5,89.4L63.5,114.8L63.2,121.6C63.0,125.3 63.3,128.7 63.8,129.2C64.3,129.7 70.8,126.5 79.1,121.7C94.5,112.8 131.9,91.2 188.5,58.5C207.8,47.4 227.7,35.8 232.9,32.8C238.1,29.8 242.5,26.9 242.7,26.3C243.0,25.4 231.6,17.7 230.7,18.1C230.6,18.1 218.6,25.1 204.0,33.6ZM230.0,1.5C230.0,2.3 230.7,3.0 231.5,3.0C232.3,3.0 233.0,2.3 233.0,1.5C233.0,0.7 232.3,0.0 231.5,0.0C230.7,0.0 230.0,0.7 230.0,1.5Z"/></g><g class="w3i-edge w3i-edge-1"><path class="w3i-fill-secondary" d="M277.3,22.1C274.4,23.8 272.0,25.6 272.0,26.0C272.0,26.5 273.9,28.0 276.3,29.4C283.9,33.8 382.1,90.4 425.2,115.3C438.2,122.8 449.5,129.3 450.4,129.6C451.9,130.2 452.1,129.3 451.8,122.5L451.5,114.7L394.5,81.8C363.2,63.7 332.6,46.0 326.5,42.5C320.5,39.0 308.8,32.3 300.6,27.6C292.4,22.9 285.0,19.0 284.1,19.0C283.2,19.0 280.1,20.4 277.3,22.1Z"/></g><g class="w3i-edge w3i-edge-2"><path class="w3i-fill-secondary" d="M465.0,258.5C465.0,322.9 465.4,362.0 465.9,362.0C466.5,362.0 469.6,360.4 472.9,358.5L479.0,354.9L479.0,258.6C479.0,168.1 478.9,162.2 477.3,160.8C474.5,158.5 468.0,155.0 466.4,155.0C465.2,155.0 465.0,169.0 465.0,258.5Z"/></g><g class="w3i-edge w3i-edge-3"><path class="w3i-fill-secondary" d="M437.0,393.9C422.7,402.3 319.5,462.0 286.8,480.8C278.6,485.4 272.0,489.8 272.0,490.4C272.0,491.0 274.8,493.0 278.2,494.7L284.4,498.0L308.4,484.1C321.7,476.4 340.8,465.4 351.0,459.5C361.2,453.6 374.9,445.7 381.5,441.9C388.1,438.1 406.6,427.5 422.5,418.2L451.5,401.4L451.8,394.2C452.1,387.8 451.9,387.0 450.3,387.1C449.3,387.1 443.3,390.2 437.0,393.9Z"/></g><g class="w3i-edge w3i-edge-4"><path class="w3i-fill-secondary" d="M63.2,394.2L63.5,401.4L97.0,420.7C115.4,431.3 137.0,443.8 145.0,448.4C153.0,453.0 175.6,466.1 195.2,477.4L231.0,498.1L237.0,494.8C240.3,493.0 242.9,490.9 242.8,490.2C242.6,489.5 221.8,476.9 196.5,462.3C171.2,447.7 131.5,424.8 108.3,411.4C85.2,398.0 65.4,387.0 64.5,387.0C63.2,387.0 63.0,388.1 63.2,394.2Z"/></g><g class="w3i-edge w3i-edge-5"><path class="w3i-fill-secondary" d="M41.8,158.2L37.0,161.2L37.0,258.1L37.0,355.0L42.5,358.5C45.5,360.4 48.4,362.0 49.0,362.0C49.7,362.0 50.0,330.0 50.0,258.5C50.0,141.5 50.9,152.4 41.8,158.2Z"/></g>
+        <path class="w3i-primary-group w3i-fill-primary" d="M281.8,1.8C281.4,3.3 260.1,17.0 258.1,17.0C257.7,17.0 251.6,13.8 244.7,9.9C237.7,6.0 231.3,3.0 230.6,3.3C229.8,3.6 209.9,15.0 186.3,28.6C162.8,42.2 138.6,56.2 132.5,59.7C126.5,63.2 105.3,75.4 85.5,86.8L49.5,107.6L49.2,122.7L48.9,137.8L36.0,145.4L23.0,153.1L23.2,258.3L23.5,363.4L34.7,370.0C40.9,373.7 46.6,377.3 47.5,378.0C48.7,379.0 49.0,381.9 49.0,393.5C49.0,405.8 49.2,407.9 50.8,409.2C51.7,410.1 60.2,415.1 69.5,420.5C89.6,432.1 94.1,434.6 169.7,478.4C213.5,503.7 228.7,512.0 231.2,512.0C233.3,512.0 238.5,509.7 246.2,505.4L258.0,498.8L266.3,503.6C270.8,506.2 275.7,509.2 277.2,510.2C282.2,513.6 286.1,512.7 300.9,504.2C317.1,494.8 331.2,486.7 407.5,442.6L465.5,409.1L466.0,393.8L466.5,378.5L479.0,370.9L491.5,363.3L491.5,258.0L491.5,152.6L480.4,146.0C474.3,142.4 468.5,138.9 467.6,138.1C466.3,137.0 466.0,134.5 466.0,122.5C466.0,106.6 466.6,107.9 457.5,102.7C450.0,98.5 439.8,92.6 367.0,50.5C334.8,31.9 303.4,13.7 297.1,10.2C290.5,6.4 285.5,2.9 285.3,1.9C284.6,-0.5 282.4,-0.6 281.8,1.8Z M237.0,21.6C240.4,23.6 242.9,25.7 242.7,26.3C242.5,26.9 238.1,29.8 232.9,32.8C227.7,35.8 207.8,47.4 188.5,58.5C131.9,91.2 94.5,112.8 79.1,121.7C70.8,126.5 64.3,129.7 63.8,129.2C63.3,128.7 63.0,125.3 63.2,121.6L63.5,114.8L107.5,89.4C169.6,53.6 174.4,50.8 204.0,33.6C218.6,25.1 230.6,18.1 230.7,18.1C230.8,18.0 233.6,19.6 237.0,21.6Z M300.6,27.6C308.8,32.3 320.5,39.0 326.5,42.5C332.6,46.0 363.2,63.7 394.5,81.8L451.5,114.7L451.8,122.5C452.1,129.3 451.9,130.2 450.4,129.6C449.5,129.3 438.2,122.8 425.2,115.3C382.1,90.4 283.9,33.8 276.3,29.4C273.9,28.0 272.0,26.5 272.0,26.0C272.0,24.9 282.1,19.1 284.1,19.0C285.0,19.0 292.4,22.9 300.6,27.6Z M243.0,50.3L243.0,57.7L246.8,60.1L250.5,62.5L250.8,74.7L251.1,86.8L241.8,92.1C227.8,99.9 229.0,97.7 229.0,116.6L229.0,132.8L240.0,139.0L251.0,145.3L251.0,156.6L251.0,167.9L241.8,173.3C230.7,179.8 204.0,195.2 191.6,202.3L182.7,207.4L177.4,204.6C174.4,203.0 170.0,200.5 167.5,198.9L163.0,196.0L163.0,183.2L163.0,170.3L148.8,162.1L134.7,153.9L123.3,160.5L112.0,167.0L101.5,160.9L91.0,154.8L91.0,150.0L91.0,145.1L85.0,141.8C81.7,140.0 79.1,138.1 79.3,137.5C79.6,136.6 88.7,131.2 136.0,104.0C147.3,97.5 175.6,81.1 199.0,67.6C222.4,54.1 241.8,43.0 242.3,43.0C242.7,43.0 243.0,46.3 243.0,50.3Z M293.2,54.1C303.8,60.3 318.4,68.7 325.6,72.9C332.9,77.1 360.6,93.1 387.4,108.5C414.1,123.9 436.0,137.0 436.0,137.6C436.0,138.2 434.1,139.7 431.8,141.0C424.9,144.7 424.0,145.9 424.0,150.6L424.0,154.8L413.6,160.9L403.2,167.0L392.8,161.0C387.2,157.7 381.7,155.0 380.6,155.0C378.8,155.0 357.2,166.9 353.8,169.8C352.3,171.1 352.0,173.1 352.0,183.5C352.0,193.9 351.7,195.9 350.3,197.2C347.8,199.3 334.0,207.0 332.8,207.0C332.2,207.0 330.3,206.2 328.6,205.1C326.9,204.1 311.6,195.3 294.7,185.5L263.9,167.8L264.2,156.6L264.5,145.5L275.3,139.1L286.0,132.8L286.0,116.0L286.0,99.2L276.1,93.6C270.7,90.6 265.8,87.4 265.1,86.6C264.3,85.7 264.0,81.5 264.2,73.9L264.5,62.5L268.3,60.1L272.0,57.7L272.0,50.3C272.0,46.3 272.4,43.0 272.9,43.0C273.4,43.0 282.6,48.0 293.2,54.1Z M266.2,100.8L274.5,105.6L274.8,115.8L275.1,125.9L271.2,128.4C269.1,129.7 265.1,132.1 262.4,133.6L257.4,136.3L249.0,131.3L240.5,126.3L240.5,116.0L240.5,105.7L249.0,100.9C253.7,98.2 257.6,96.0 257.7,96.0C257.8,96.0 261.6,98.2 266.2,100.8Z M50.0,258.5C50.0,330.0 49.7,362.0 49.0,362.0C48.4,362.0 45.5,360.4 42.5,358.5L37.0,355.0L37.0,258.1L37.0,161.2L41.8,158.2C50.9,152.4 50.0,141.5 50.0,258.5Z M471.7,157.2C479.8,161.8 479.0,150.8 479.0,258.6L479.0,354.9L472.9,358.5C469.6,360.4 466.5,362.0 465.9,362.0C465.4,362.0 465.0,322.9 465.0,258.5C465.0,169.0 465.2,155.0 466.4,155.0C467.2,155.0 469.6,156.0 471.7,157.2Z M71.6,167.1L77.1,170.2L81.4,168.0L85.7,165.7L95.6,171.6L105.5,177.5L106.0,190.7L106.5,204.0L119.1,211.3C126.0,215.4 132.4,219.0 133.4,219.3C134.5,219.8 138.7,217.9 145.8,213.8C157.9,206.9 156.8,206.9 168.8,213.9L176.0,218.1L175.8,258.3L175.5,298.5L166.4,303.8L157.3,309.1L146.9,303.0C141.2,299.7 135.7,297.0 134.6,297.0C132.8,297.0 111.2,308.9 107.8,311.8C106.3,313.1 106.0,315.1 106.0,325.5C106.0,339.6 106.8,338.2 94.2,345.5L85.8,350.3L81.3,348.1L76.8,345.9L71.5,349.0C62.1,354.4 63.0,364.3 63.0,258.0C63.0,174.7 63.2,164.0 64.5,164.0C65.3,164.0 68.5,165.4 71.6,167.1Z M452.0,258.0C452.0,364.3 452.9,354.4 443.3,348.9L438.0,345.8L434.4,347.9C432.5,349.1 430.5,350.0 429.9,350.0C428.7,350.0 413.2,341.2 410.8,339.2C409.3,337.9 409.0,335.9 409.0,325.0L409.0,312.2L395.6,304.6C388.2,300.4 381.4,297.0 380.4,297.0C379.4,297.0 374.0,299.7 368.3,303.0L358.0,309.0L348.5,303.5L339.0,297.9L339.0,258.0L339.0,218.2L348.5,212.7L358.0,207.1L369.0,213.6C375.0,217.1 380.1,220.0 380.4,220.0C380.7,220.0 387.3,216.4 395.0,211.9L408.9,203.8L409.2,190.7L409.5,177.6L419.5,171.7L429.5,165.8L433.8,168.1L438.1,170.3L442.3,168.0C444.6,166.8 446.9,165.3 447.5,164.9C448.0,164.4 449.2,164.0 450.2,164.0C451.9,164.0 452.0,168.1 452.0,258.0Z M143.2,171.8L151.5,176.6L151.8,186.8L152.1,196.9L148.2,199.4C146.1,200.7 142.1,203.1 139.4,204.6L134.4,207.3L126.0,202.3L117.5,197.3L117.5,187.0L117.5,176.7L126.0,171.9C130.7,169.2 134.6,167.0 134.7,167.0C134.8,167.0 138.6,169.2 143.2,171.8Z M389.2,171.8L397.5,176.6L397.8,186.8L398.1,196.9L394.3,199.3C392.2,200.6 388.2,202.9 385.4,204.5L380.4,207.3L371.9,202.3L363.5,197.3L363.2,187.2L362.9,177.1L371.2,172.2C375.8,169.4 379.8,167.1 380.2,167.1C380.5,167.0 384.6,169.2 389.2,171.8Z M283.3,201.9C296.6,209.6 310.1,217.5 313.3,219.4L319.0,222.9L318.8,240.2L318.5,257.5L257.5,257.5L196.5,257.5L196.2,240.3L196.0,223.1L199.7,220.6C201.8,219.3 212.7,212.9 224.0,206.5C235.3,200.0 247.0,193.2 250.0,191.4C253.0,189.6 256.3,188.0 257.3,188.0C258.3,188.0 270.0,194.3 283.3,201.9Z M318.5,278.5L318.5,288.5L257.5,288.5L196.5,288.5L196.2,279.6C196.0,274.7 196.1,270.1 196.4,269.3C196.9,268.2 207.7,268.0 257.7,268.2L318.5,268.5L318.5,278.5Z M249.8,309.5C250.7,309.8 251.0,316.9 251.0,340.3L251.0,370.8L241.8,376.0C227.8,384.0 229.0,381.7 229.0,400.6L229.0,416.8L238.3,422.1C251.9,429.8 251.0,428.4 251.0,442.0L251.0,453.7L247.3,456.1C243.5,458.5 243.5,458.6 243.2,465.8C243.0,470.1 242.5,473.0 241.8,473.0C240.9,473.0 229.0,466.3 180.0,438.0C173.1,434.0 158.7,425.7 148.0,419.5C137.3,413.3 122.9,405.0 116.0,401.0C109.1,397.0 98.0,390.6 91.3,386.8C84.5,382.9 79.0,379.3 79.0,378.6C79.0,378.0 81.6,376.1 84.8,374.4C90.3,371.5 90.5,371.2 90.8,366.9C91.0,364.5 91.6,362.0 92.1,361.4C93.5,359.7 110.5,350.0 112.1,350.0C112.9,350.0 118.2,352.7 123.9,356.0C129.6,359.4 134.8,361.9 135.4,361.7C136.0,361.4 142.4,357.8 149.5,353.7L162.5,346.2L163.0,332.8L163.5,319.5L173.1,314.0L182.6,308.5L215.6,308.8C233.7,308.9 249.1,309.2 249.8,309.5Z M340.7,313.1C345.5,315.9 350.1,318.6 350.8,319.2C351.6,319.9 352.0,324.0 352.0,333.0L352.0,345.8L366.0,353.9C373.7,358.4 380.3,362.0 380.6,362.0C380.9,362.0 385.8,359.3 391.4,356.0C397.1,352.7 402.3,350.0 403.0,350.0C403.8,350.0 408.8,352.5 414.2,355.6L424.0,361.2L424.0,366.0L424.0,370.9L430.0,374.2C433.4,376.0 435.9,378.1 435.8,378.8C435.6,379.6 430.8,382.9 425.0,386.2C419.2,389.6 408.7,395.6 401.5,399.8C394.4,403.9 366.7,419.9 340.0,435.3C313.3,450.7 287.7,465.5 283.1,468.2C278.5,470.8 274.1,473.0 273.4,473.0C272.3,473.0 272.0,471.2 272.0,465.5L272.0,458.0L268.0,456.0L264.0,454.0L264.0,442.0L264.0,430.0L267.8,427.6C269.8,426.3 274.8,423.4 278.8,421.1L286.0,416.9L286.0,400.0L286.0,383.2L275.0,377.0L264.0,370.8L264.2,340.2L264.5,309.5L297.0,309.0C314.9,308.7 330.0,308.4 330.7,308.2C331.3,308.1 335.8,310.3 340.7,313.1Z M143.2,313.8L151.5,318.6L151.8,328.8L152.1,339.0L147.7,341.8C145.3,343.3 141.3,345.6 138.8,346.9L134.4,349.3L125.9,344.3L117.5,339.3L117.5,329.0L117.5,318.7L126.0,313.9C130.7,311.2 134.6,309.0 134.7,309.0C134.8,309.0 138.6,311.2 143.2,313.8Z M390.3,314.5L398.1,319.1L397.8,329.2L397.5,339.3L389.5,344.1C385.1,346.8 381.1,348.9 380.5,348.9C380.0,348.9 375.9,346.8 371.5,344.1L363.5,339.3L363.2,329.2L362.9,319.1L370.7,314.5C375.0,312.0 379.4,310.0 380.5,310.0C381.6,310.0 386.0,312.0 390.3,314.5Z M267.3,385.5L275.0,390.0L275.0,400.0L275.0,410.0L271.2,412.4C269.1,413.7 265.1,416.1 262.4,417.6L257.4,420.4L249.0,415.4L240.5,410.4L240.2,400.3L239.9,390.1L247.7,385.5C252.0,383.0 256.4,381.0 257.5,381.0C258.6,381.0 263.0,383.0 267.3,385.5Z M108.3,411.4C131.5,424.8 171.2,447.7 196.5,462.3C221.8,476.9 242.6,489.5 242.8,490.2C242.9,490.9 240.3,493.0 237.0,494.8L231.0,498.1L195.2,477.4C175.6,466.1 153.0,453.0 145.0,448.4C137.0,443.8 115.4,431.3 97.0,420.7L63.5,401.4L63.2,394.2C63.0,388.1 63.2,387.0 64.5,387.0C65.4,387.0 85.2,398.0 108.3,411.4Z M451.8,394.2L451.5,401.4L422.5,418.2C406.6,427.5 388.1,438.1 381.5,441.9C374.9,445.7 361.2,453.6 351.0,459.5C340.8,465.4 321.7,476.4 308.4,484.1L284.4,498.0L278.2,494.7C274.8,493.0 272.0,491.0 272.0,490.4C272.0,489.8 278.6,485.4 286.8,480.8C319.5,462.0 422.7,402.3 437.0,393.9C443.3,390.2 449.3,387.1 450.3,387.1C451.9,387.0 452.1,387.8 451.8,394.2Z"/>
+
+        <g class="w3i-fireflies" aria-hidden="true">
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="0s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-bar-0"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="0s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="1s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-bar-1"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="1s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="2s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-bar-2"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="2s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="3s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-bar-3"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="3s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="4s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-bar-4"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="4s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="5s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-bar-5"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="5s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="6s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-node-0"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="6s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="7s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-node-1"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="7s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="8s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-node-2"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="8s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="9s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-node-3"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="9s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="10s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-node-4"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="10s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle class="w3i-firefly" r="2.3">
+            <animateMotion dur="12s" begin="11s" repeatCount="indefinite" calcMode="linear">
+              <mpath href="#w3i-ff-node-5"/>
+            </animateMotion>
+            <animate
+              attributeName="opacity"
+              values="0;0;1;1;0"
+              keyTimes="0;0.12;0.20;0.72;1"
+              dur="12s"
+              begin="11s"
+              repeatCount="indefinite"
+            />
+          </circle>
+        </g>
+      </svg>
+    </div>
+
+    <h1 class="w3i-slogan">
+      Transformez vos processus<br>
+      en <em>avantages compétitifs</em>
+    </h1>
+
+    <p class="w3i-sub">
+      Nous analysons ensemble votre organisation, identifions les tâches à automatiser
+      et déployons des solutions avec ou sans IA adaptées à votre entreprise et votre budget.
     </p>
-    <div class="cards">
-      <div class="card">
-        <div class="icon">🎓</div>
-        <h3>Learn</h3>
-        <p>Des parcours simples pour comprendre wallets, blockchains, DeFi, sécurité et mindset.</p>
-      </div>
-      <div class="card">
-        <div class="icon">📈</div>
-        <h3>Invest</h3>
-        <p>Une culture du risque, du capital et de la progression durable plutôt que de la hype.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🛠️</div>
-        <h3>Build</h3>
-        <p>Des briques concrètes pour construire produits, agents et automatisations web3.</p>
-      </div>
-      <div class="card">
-        <div class="icon">💬</div>
-        <h3>Community</h3>
-        <p>Une organisation incarnée, accessible, humaine et orientée transmission.</p>
-      </div>
-    </div>
-  </section>
-    
-  <section class="section wrap">
-    <h2 class="title">Le mindset : progresser étape par étape.</h2>
-    <p class="subtitle">Penser juste, analyser, planifier, tester, agir, recommencer et durer. Le trading et le web3 ne
-      sont pas une promesse magique : <br /> <strong>Ce sont des compétences à cultiver.</strong></p>
-    <div class="wideImage"><img src="assets/success_mindset.png" alt="Success mindset Web3Invest"></div>
-  </section>
 
-  <section id="team" class="section wrap">
-    <h2 class="title">La team Web3Invest</h2>
-      
-    <div class="wideImage"><img src="assets/teamwork.png" alt="Réunion de la team Web3Invest"></div>
-    <p class="subtitle">
-      Chaque collaborateur (IA et/ou Humain) possède un rôle clair, une identité et une mission. 
-      Ensemble, ils forment l’ossature narrative et opérationnelle de l’organisation.
+    <div class="w3i-ctas">
+      <a class="w3i-btn w3i-btn-primary" href="mailto:contact@web3invest.fr">🖂 Nous contacter</a>
+      <a class="w3i-btn w3i-btn-secondary" href="https://doctor.web3invest.fr" target="_blank" rel="noopener">🤖 Diagnostic IA gratuit →</a>
+    </div>
+
+    <p class="w3i-footer">
+      <span>© WEB3INVEST — ANALYSER · AUTOMATISER · AMÉLIORER</span>
+      <br />
+      <em>Ensemble, cultivons le web3</em>
     </p>
-    <div class="team" style="display: flex;">
-      <article class="member"><img src="assets/cedric.png" alt="Cédric CEO">
-        <div>
-          <h3 style="text-align: center;">Cédric</h3>
-          <p style="text-align: center;">
-            <span><strong>CEO — Fondateur & Opérateur AIAOS principal</strong></span>
-            <br />
-            <span style="text-align: center;">Je ne suis pas un agent IA 😇</span>
-          </p>
-        </div>
-      </article>
-    </div>
-    <div class="team" style="display: flex; justify-content: center;">
-      <article class="member"><img src="assets/micheline-documentaliste.png" alt="Micheline Documentaliste">
-        <div>
-          <h3>Micheline</h3>
-          <p>Documentaliste — structure et relie la mémoire du projet.</p>
-        </div>
-      </article>
-      <article class="member"><img src="assets/claude-devops.png" alt="Claude DevOps">
-        <div>
-          <h3>Claude</h3>
-          <p>DevOps Engineer — automatise, déploie, surveille et stabilise.</p>
-        </div>
-      </article>
-      <article class="member"><img src="assets/cindy-community-manager.png" alt="Cindy Community Manager">
-        <div>
-          <h3>Cindy</h3>
-          <p>Community Manager — rend le web3 simple, motivant et humain.</p>
-        </div>
-      </article>
-    </div>
-    <div class="matrix">
-      <div class="role"><b>Synex · Product Owner</b><span>Transforme les idées en roadmap exécutable.</span></div>
-      <div class="role"><b>Nexus · Architecte SOA / IAOS</b><span>Conçoit les fondations techniques et l’orchestration
-          des agents.</span></div>
-      <div class="role"><b>Bob · Security Advisor</b><span>Audite wallets, smart contracts et systèmes sensibles.</span>
-      </div>
-      <div class="role"><b>Elena · Juriste Web3</b><span>Suit MiCA, conformité, DAO, CGU et risques
-          réglementaires.</span></div>
-      <div class="role"><b>Victoria · Business Analyst</b><span>Analyse coûts, revenus, modèles économiques et
-          croissance.</span></div>
-      <div class="role"><b>Kael · Trader Quant / DeFi</b><span>Explore stratégies trading, rendement et gestion du
-          risque.</span></div>
-      <div class="role">
-        <b>Luna · UI/UX Designer</b>
-        <span>Crée des expériences immersives web3, gaming et IA.</span>
-      </div>
-      <div class="role">
-        <b style="color: goldenrod; text-transform: uppercase;">Votre persona</b>
-        <span><strong>Créons ensemble votre persona sur mesure adapté à vos besoins.</strong></span>
-        <a class="btn" style="float: right;" href="mailto:contact@web3invest.fr?subject=Création%20de%20persona">Créez votre persona →</a>
-      </div>
-    </div>
-  </section>
+  </main>
 
-  <section id="aiaos" class="wrap">
-    <div class="split">
-      <div class="heroCard"><img src="assets/AIAOS.png" alt="AIAOS Logo"></div>
-      <div class="panel">
-        <div class="eyebrow">AIAOS</div>
-        <h2 class="title">AI Agency Operating System</h2>
-        <p class="subtitle">AIAOS est la vision produit : un système d’exploitation d’agence IA capable d’orchestrer
-          personas, contextes, tâches, workflows et publications.</p>
-        <ul>
-          <li>Agents IA spécialisés par rôle</li>
-          <li>Orchestration des workflows et automatisations</li>
-          <li>Mémoire documentaire et contexte projet</li>
-          <li>Production de contenus, onboarding et support communautaire</li>
-        </ul>
-        <a class="btn" href="mailto:contact@web3invest.fr?subject=Demande%20de%20démonstration">Demandez une démonstration →</a>
-      </div>
-    </div>
-  </section>
 
-  <section id="contact" class="section wrap">
-    <div class="panel">
-      <h2 class="title">Ensemble, cultivons le web3 🌱</h2>
-      <p class="subtitle">Web3Invest aide les curieux, créateurs et organisations à comprendre les outils web3, bâtir
-        leur écosystème IA et avancer avec une équipe d’agents spécialisés.</p>
-      <div class="actions" style="display: flex; justify-content: space-between;">
-          <a class="btn" href="mailto:contact@web3invest.fr">Contactez-nous</a>
-          <a class="btn" target="_blank" href="https://discord.gg/SpfzrNzFCS">Nous rejoindre sur Discord →</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="wrap">© Web3Invest — Ensemble, cultivons le web3 · AIAOS · Build, Learn, Trading, DeFi</div>
-  </footer>
 </body>
-
 </html>
