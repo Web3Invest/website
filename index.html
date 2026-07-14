@@ -4,8 +4,36 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Web3Invest — Ensemble, cultivons le web3</title>
-  <meta name="description"
-    content="Web3Invest est un écosystème IA pour apprendre, investir et construire le futur du web3." />
+
+  <!-- Open Graph -->
+  <meta property="og:title"
+        content="Web3Invest — AI Agency Operating System">
+
+  <meta property="og:description"
+        content="Analyse, automatisation et déploiement d'agents IA pour les entreprises.">
+
+  <meta property="og:image"
+        content="https://web3invest.fr/assets/w3i-og-banner.png">
+
+  <meta property="og:image:width"
+        content="1200">
+
+  <meta property="og:image:height"
+        content="630">
+
+  <meta property="og:type"
+        content="website">
+
+  <meta property="og:url"
+        content="https://web3invest.fr">
+
+  <meta property="og:site_name"
+        content="Web3Invest">
+
+  <meta name="twitter:card"
+      content="summary_large_image">
+
+  <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
@@ -19,327 +47,13 @@
     gtag('config', 'G-C62Q00LW13');
   </script>
 
-
-<style>
-  :root {
-    --bg: #08090B;
-    --ink: #F2EFEA;
-    --ink-muted: #8B9096;
-    --contour: #333; /*#8B9096;*/
-    --gold: #DE7A1A;
-    --gold-light: #F0A94E;
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Manrope', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-  }
-
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-body);
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(242,239,234,0.028) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(242,239,234,0.028) 1px, transparent 1px);
-    background-size: 42px 42px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .w3i-page {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 64px 24px;
-    text-align: center;
-  }
-
-  .w3i-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin: 0 0 8px;
-  }
-
-  .w3i-logo-wrap {
-    width: min(360px, 62vw);
-    aspect-ratio: 1;
-    margin: 12px 0 8px;
-    position: relative;
-  }
-  .w3i-logo-svg { width: 100%; height: 100%; overflow: visible; display:block; }
-
-  .w3i-fill-primary { fill: var(--contour); }
-  .w3i-fill-secondary { fill: var(--gold); }
-
-  .w3i-firefly {
-    fill: var(--gold-light);
-    filter: drop-shadow(0 0 3px var(--gold-light));
-  }
-
-  .w3i-slogan {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(28px, 4.4vw, 48px);
-    letter-spacing: -0.01em;
-    margin: 18px 0 10px;
-    line-height: 1.12;
-  }
-  .w3i-slogan em {
-    font-style: normal;
-    color: var(--gold);
-  }
-
-  .w3i-sub {
-    font-size: 16px;
-    color: var(--ink-muted);
-    max-width: 46ch;
-    margin: 0 0 40px;
-    line-height: 1.6;
-  }
-
-  .w3i-ctas {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .w3i-btn {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 15px;
-    padding: 15px 30px;
-    border-radius: 3px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-  }
-  .w3i-btn-primary {
-    background: var(--gold);
-    color: #16110A;
-  }
-  .w3i-btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(222,122,26,0.28);
-  }
-  .w3i-btn-secondary {
-    background: transparent;
-    color: var(--ink);
-    border: 1px solid rgba(242,239,234,0.28);
-    clip-path: none;
-    border-radius: 3px;
-  }
-  .w3i-btn-secondary:hover {
-    border-color: var(--gold);
-    color: var(--gold-light);
-    transform: translateY(-2px);
-  }
-
-  .w3i-footer {
-    margin-top: 56px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    color: var(--ink-muted);
-    opacity: .7;
-  }
-
-  .w3i-mascot {
-    position: fixed;
-    right: -30px;
-    bottom: -40px;
-    width: 240px;
-    z-index: 0;
-    opacity: 0;
-    filter: grayscale(15%) brightness(0.92) contrast(1.04);
-    animation: w3iMascotIn 1.4s ease forwards 1.2s;
-    pointer-events: none;
-    user-select: none;
-  }
-  @keyframes w3iMascotIn {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: .85; transform: translateY(0); }
-  }
-  @media (max-width: 720px) {
-    .w3i-mascot { width: 150px; right: -20px; bottom: -24px; }
-  }
-
-  
-
-
-  /* =========================================================
-     LOGO — timeline unique
-     0.00 → 1.00 s : barre centrale
-     1.00 → 1.58 s : nodes, sens horaire depuis le haut
-     1.62 → 2.20 s : arêtes extérieures
-     2.22 → 2.62 s : structure principale
-     ========================================================= */
-
-  .w3i-bar,
-  .w3i-node,
-  .w3i-edge,
-  .w3i-primary-group {
-    opacity: 0;
-  }
-
-  .w3i-bar {
-    transform: scaleX(0);
-    transform-origin: left center;
-    transform-box: fill-box;
-    animation: w3iBar 1s linear forwards;
-  }
-
-  .w3i-node {
-    transform: scale(.3);
-    transform-origin: center;
-    transform-box: fill-box;
-    animation: w3iNode .18s cubic-bezier(.2, .9, .3, 1.35) forwards;
-  }
-
-  /* Haut → haut-droite → bas-droite → bas → bas-gauche → haut-gauche */
-  .w3i-node-3 { animation-delay: 1.00s; }
-
-  .w3i-node-4 { animation-delay: 1.08s; }
-  .w3i-node-5 { animation-delay: 1.16s; }
-
-  .w3i-node-0 { animation-delay: 1.24s; }
-  .w3i-node-1 { animation-delay: 1.32s; }
-  .w3i-node-2 { animation-delay: 1.40s; }
-  
-
-  .w3i-edge {
-    animation: w3iEdge .22s ease-out forwards;
-  }
-
-  .w3i-edge-0 { animation-delay: 1.62s; }
-  .w3i-edge-1 { animation-delay: 1.70s; }
-  .w3i-edge-2 { animation-delay: 1.78s; }
-
-  .w3i-edge-3 { animation-delay: 1.62s; }
-  .w3i-edge-4 { animation-delay: 1.70s; }
-  .w3i-edge-5 { animation-delay: 1.78s; }
-
-  .w3i-primary-group {
-    animation: w3iPrimary .40s ease-out 2.22s forwards;
-  }
-
-  @keyframes w3iBar {
-    0% {
-      opacity: 1;
-      transform: scaleX(0);
-      fill: #fff;
-    }
-    92% {
-      opacity: 1;
-      transform: scaleX(.92);
-      fill: #fff;
-    }
-    100% {
-      opacity: 1;
-      transform: scaleX(1);
-      fill: var(--gold);
-    }
-  }
-
-  @keyframes w3iNode {
-    0% {
-      opacity: 0;
-      transform: scale(.3);
-      fill: #fff;
-    }
-    55% {
-      opacity: 1;
-      transform: scale(1.18);
-      fill: #fff;
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-      fill: var(--gold);
-    }
-  }
-
-  @keyframes w3iEdge {
-    0% {
-      opacity: 0;
-      fill: #fff;
-    }
-    45% {
-      opacity: 1;
-      fill: #fff;
-    }
-    100% {
-      opacity: 1;
-      fill: var(--gold);
-    }
-  }
-
-  @keyframes w3iPrimary {
-    0% {
-      opacity: 0;
-      fill: #fff;
-    }
-    100% {
-      opacity: 1;
-      fill: var(--contour);
-    }
-  }
-
-  /* Les lucioles utilisent uniquement SMIL dans le SVG.
-     Pas de seconde animation CSS concurrente. */
-  .w3i-firefly {
-    fill: var(--gold-light);
-    opacity: 0;
-    filter: drop-shadow(0 0 3px var(--gold-light));
-    pointer-events: none;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-
-    .w3i-bar,
-    .w3i-node,
-    .w3i-edge,
-    .w3i-primary-group,
-    .w3i-mascot {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-
-    .w3i-firefly {
-      display: none;
-    }
-  }
-
-</style>
 </head>
 <body>
 
   <img class="w3i-mascot" src="mascot_final.webp" alt="" aria-hidden="true">
 
   <main class="w3i-page">
-    <p class="w3i-eyebrow">Web3Invest · Rouen, Normandie</p>
+    <p class="w3i-eyebrow">AI Agency Operating System</p>
 
     <div class="w3i-logo-wrap">
       <svg class="w3i-logo-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
