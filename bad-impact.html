@@ -1,0 +1,1492 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>BAD Impact — Web3Invest</title>
+
+  <meta
+    name="description"
+    content="BAD Impact transforme les contributions de la communauté en diagnostics stratégiques offerts à des associations."
+  />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C62Q00LW13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());8
+
+    gtag('config', 'G-C62Q00LW13');
+  </script>
+
+  <style>
+    :root {
+      --bg: #07090b;
+      --bg-soft: #0d1115;
+      --card: rgba(15, 19, 23, 0.88);
+      --card-hover: rgba(19, 24, 29, 0.96);
+
+      --text: #f5f5f5;
+      --muted: #a7adb4;
+
+      --orange: #f5820b;
+      --orange-light: #ff9c2b;
+      --orange-dark: #b95800;
+
+      --border: rgba(245, 130, 11, 0.32);
+      --border-soft: rgba(255, 255, 255, 0.08);
+
+      --success: #28c98b;
+
+      --container: 1440px;
+      --radius: 14px;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        var(--bg);
+      background-size: 64px 64px;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--container));
+      margin-inline: auto;
+    }
+
+    .orange {
+      color: var(--orange-light);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--orange-light);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.05;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .card {
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.025),
+          rgba(255, 255, 255, 0.008)
+        ),
+        var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      padding: 0 22px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid var(--orange);
+      border-radius: 7px;
+      color: #090b0d;
+      background: linear-gradient(135deg, var(--orange-light), var(--orange));
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        filter 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 35px rgba(245, 130, 11, 0.24);
+      filter: brightness(1.05);
+    }
+
+    .button--secondary {
+      color: var(--text);
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .button--secondary:hover {
+      border-color: var(--orange);
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-soft);
+      background: rgba(7, 9, 11, 0.92);
+      backdrop-filter: blur(16px);
+    }
+
+    .navbar {
+      min-height: 74px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .navbar__brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .navbar__logo {
+      width: 122px;
+      display: block;
+      width: auto;
+      max-width: 138px;
+      height: 46px;
+      object-fit: contain;
+    }
+
+    .navbar__links {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: clamp(22px, 3vw, 54px);
+      list-style: none;
+    }
+
+    .navbar__link {
+      position: relative;
+      min-height: 74px;
+      display: inline-flex;
+      align-items: center;
+      color: #e7e9eb;
+      font-size: 0.95rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .navbar__link::after {
+      content: "";
+      position: absolute;
+      right: 50%;
+      bottom: 10px;
+      left: 50%;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--orange);
+      transition:
+        left 180ms ease,
+        right 180ms ease;
+    }
+
+    .navbar__link:hover,
+    .navbar__link--active {
+      color: var(--orange-light);
+    }
+
+    .navbar__link:hover::after,
+    .navbar__link--active::after {
+      right: 0;
+      left: 0;
+    }
+
+    .navbar__toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 9px;
+      border: 1px solid var(--border-soft);
+      border-radius: 7px;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .navbar__toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      margin: 5px 0;
+      border-radius: 999px;
+      background: var(--text);
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+    position: relative;
+
+    /* Format proche du 16:9 de l'image */
+    min-height: clamp(680px, 56.25vw, 960px);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-soft);
+
+    background-image:
+        linear-gradient(
+        180deg,
+        rgba(7, 9, 11, 0.02) 0%,
+        rgba(7, 9, 11, 0.02) 55%,
+        rgba(7, 9, 11, 0.82) 84%,
+        var(--bg) 100%
+        ),
+        url("/assets/BAD-Impact-hero.png");
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 32%;
+      background: linear-gradient(transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      width: min(100% - 40px, 920px);
+      margin-bottom: 100px;
+      text-align: center;
+    }
+
+    .hero__content h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .hero__content p {
+      max-width: 780px;
+      margin: 18px auto 0;
+      color: #e4e6e8;
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      line-height: 1.55;
+    }
+
+    .hero__actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* =========================
+       INTRO + COMPTEUR
+    ========================== */
+
+    .impact-intro {
+      padding: 72px 0;
+    }
+
+    .impact-intro__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .impact-copy,
+    .impact-counter {
+      padding: clamp(26px, 4vw, 46px);
+    }
+
+    .impact-copy p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .impact-counter {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border-color: var(--border);
+    }
+
+    .counter-label {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .counter {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .counter__digit {
+      min-width: clamp(45px, 7vw, 72px);
+      min-height: clamp(62px, 9vw, 94px);
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border-soft);
+      border-radius: 9px;
+      color: var(--orange-light);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.045),
+          rgba(255, 255, 255, 0.01)
+        );
+      font-family: "Courier New", monospace;
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      font-weight: 800;
+      box-shadow:
+        inset 0 1px rgba(255, 255, 255, 0.05),
+        0 12px 30px rgba(0, 0, 0, 0.28);
+    }
+
+    .counter-subtitle {
+      margin: 16px 0 24px;
+      color: #ebedef;
+    }
+
+    /* =========================
+       MISSION
+    ========================== */
+
+    .mission-section {
+      padding: 10px 0 80px;
+    }
+
+    .mission-layout {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
+      gap: 30px;
+    }
+
+    .mission {
+      overflow: hidden;
+    }
+
+    .mission__image {
+      aspect-ratio: 16 / 8;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .mission__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mission__body {
+      padding: clamp(24px, 4vw, 38px);
+    }
+
+    .mission__topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .mission__status {
+      display: inline-flex;
+      min-height: 30px;
+      padding: 0 12px;
+      align-items: center;
+      border: 1px solid rgba(245, 130, 11, 0.3);
+      border-radius: 999px;
+      color: var(--orange-light);
+      background: rgba(245, 130, 11, 0.08);
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .mission h3 {
+      margin: 22px 0 8px;
+      font-size: clamp(1.55rem, 3vw, 2.35rem);
+    }
+
+    .mission__association {
+      margin: 0;
+      color: var(--orange-light);
+      font-weight: 700;
+    }
+
+    .mission__description {
+      margin: 20px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .progress {
+      margin-top: 28px;
+    }
+
+    .progress__labels {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #e6e8e9;
+      font-weight: 700;
+    }
+
+    .progress__track {
+      height: 13px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      border-radius: 999px;
+      background: #171b20;
+    }
+
+    .progress__bar {
+      width: 62%;
+      height: 100%;
+      border-radius: inherit;
+      background:
+        linear-gradient(90deg, var(--orange-dark), var(--orange-light));
+      box-shadow: 0 0 22px rgba(245, 130, 11, 0.28);
+    }
+
+    .mission__stats {
+      margin: 18px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .mission__actions {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* =========================
+       FONCTIONNEMENT
+    ========================== */
+
+    .steps {
+      padding: 32px;
+    }
+
+    .steps h3 {
+      margin: 0 0 28px;
+      font-size: 1.45rem;
+    }
+
+    .steps__list {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .step__number {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--orange-light);
+      font-weight: 900;
+      background: rgba(245, 130, 11, 0.05);
+    }
+
+    .step h4 {
+      margin: 3px 0 7px;
+      font-size: 1rem;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    /* =========================
+       RAPPORTS
+    ========================== */
+
+    .reports {
+      padding: 10px 0 80px;
+    }
+
+    .reports__grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .report {
+      min-height: 100%;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease;
+    }
+
+    .report:hover {
+      transform: translateY(-4px);
+      border-color: var(--border);
+      background: var(--card-hover);
+    }
+
+    .report__date {
+      color: var(--orange-light);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .report h3 {
+      margin: 15px 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .report p {
+      margin: 0;
+      flex: 1;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .report__links {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .text-link {
+      color: var(--orange-light);
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================
+       PRINCIPES
+    ========================== */
+
+    .principles {
+      padding: 0 0 80px;
+    }
+
+    .principles__grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      overflow: hidden;
+    }
+
+    .principle {
+      min-height: 210px;
+      padding: 30px;
+      border-right: 1px solid var(--border-soft);
+    }
+
+    .principle:last-child {
+      border-right: none;
+    }
+
+    .principle__icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--orange-light);
+      font-size: 1.35rem;
+    }
+
+    .principle h3 {
+      margin: 20px 0 9px;
+      font-size: 1rem;
+    }
+
+    .principle p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    /* =========================
+       CTA FINAL
+    ========================== */
+
+    .final-cta {
+      padding: 0 0 84px;
+    }
+
+    .final-cta__inner {
+      padding: clamp(28px, 5vw, 48px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      border-color: var(--border);
+    }
+
+    .final-cta h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+    }
+
+    .final-cta p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    .site-footer {
+      border-top: 1px solid var(--border-soft);
+      background: rgba(4, 6, 8, 0.8);
+    }
+
+    .footer__inner {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer__logo {
+      width: 110px;
+    }
+
+    .footer__copy {
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer__links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer__links a:hover {
+      color: var(--orange-light);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 1050px) {
+      .impact-intro__grid,
+      .mission-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .reports__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .principles__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .principle:nth-child(2) {
+        border-right: none;
+      }
+
+      .principle:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--border-soft);
+      }
+    }
+
+    @media (max-width: 920px) {
+      .navbar {
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+      }
+
+      .navbar__toggle {
+        display: block;
+      }
+
+      .navbar__cta {
+        display: none;
+      }
+
+      .navbar__links {
+        position: absolute;
+        top: 74px;
+        right: 0;
+        left: 0;
+        display: none;
+        padding: 22px;
+        flex-direction: column;
+        gap: 2px;
+        border-bottom: 1px solid var(--border-soft);
+        background: rgba(7, 9, 11, 0.98);
+      }
+
+      .navbar__links.is-open {
+        display: flex;
+      }
+
+      .navbar__link {
+        min-height: 48px;
+        justify-content: center;
+      }
+
+      .hero {
+        min-height: 680px;
+        background-position: center top;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 24px, var(--container));
+      }
+
+      .hero {
+        min-height: 620px;
+      }
+
+      .hero__content {
+        margin-bottom: 0;
+      }
+
+      .reports__grid,
+      .principles__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .principle,
+      .principle:nth-child(2) {
+        border-right: none;
+        border-bottom: 1px solid var(--border-soft);
+      }
+
+      .principle:last-child {
+        border-bottom: none;
+      }
+
+      .final-cta__inner {
+        grid-template-columns: 1fr;
+      }
+
+      .final-cta__actions {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer__inner {
+        padding: 26px 0;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Navigation principale">
+      <a class="navbar__brand" href="/" aria-label="Web3Invest — Accueil">
+        <img
+          class="navbar__logo"
+          src="/assets/w3i-doctor-icon.png"
+          alt="Web3Invest"
+          width="128"
+          height="48"
+        />
+      </a>
+
+      <button
+        class="navbar__toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="main-navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar__links" id="main-navigation">
+        <li>
+          <a class="navbar__link" href="/">Accueil</a>
+        </li>
+
+        <li>
+          <a
+            class="navbar__link navbar__link--active"
+            href="/bad-impact"
+            aria-current="page"
+          >
+            BAD Impact
+          </a>
+        </li>
+
+      </ul>
+
+      <a
+        class="button navbar__cta"
+        href="https://calendly.com/cedric-badmington"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📅 Réserver un RDV
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+    <div class="hero__content">
+        <p class="hero__tagline">
+        La communauté finance. Web3Invest agit.<br />
+        L'association bénéficie. L'impact se multiplie.
+        </p>
+
+        <div class="hero__actions">
+        <a class="button" href="#mission">
+            Soutenir la mission
+        </a>
+
+        <a class="button button--secondary" href="#fonctionnement">
+            Comprendre le fonctionnement
+        </a>
+        </div>
+    </div>
+    </section>
+
+    <!-- PRÉSENTATION + COMPTEUR GLOBAL -->
+    <section class="impact-intro">
+      <div class="container impact-intro__grid">
+        <article class="card impact-copy">
+          <p class="eyebrow">Pourquoi BAD Impact ?</p>
+
+          <h2 class="section-title">
+            Ensemble, générons
+            <span class="orange">un impact réel.</span>
+          </h2>
+
+          <p>
+            BAD Impact permet à la communauté de financer des missions
+            d'expertise au bénéfice d'associations et de structures
+            d'intérêt général.
+          </p>
+
+          <p>
+            Lorsqu'une mission atteint son objectif, Web3Invest réalise
+            un BAD Scan complet et remet à l'association un diagnostic
+            structuré accompagné de recommandations concrètes.
+          </p>
+
+          <p>
+            Chaque mission est suivie publiquement. Les enseignements
+            partageables sont ensuite publiés sous forme de rapport PDF,
+            de slides ou de contenu LinkedIn.
+          </p>
+        </article>
+
+        <aside class="card impact-counter">
+          <div>
+            <div class="counter-label">Impact généré</div>
+
+            <div
+              class="counter"
+              id="impact-counter"
+              data-value="00000"
+              aria-label="0 euro collecté"
+            >
+              <span class="counter__digit">0</span>
+              <span class="counter__digit">0</span>
+              <span class="counter__digit">0</span>
+              <span class="counter__digit">0</span>
+              <span class="counter__digit">0</span>
+            </div>
+
+            <p class="counter-subtitle">
+              € collectés pour financer des missions d'impact
+            </p>
+
+            <a class="button" href="#reports">
+              Découvrir les actions
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- MISSION EN COURS -->
+    <section class="mission-section" id="mission">
+      <div class="container">
+        <p class="eyebrow">Mission BAD Impact #001</p>
+
+        <h2 class="section-title">
+          La première mission
+          <span class="orange">est en cours.</span>
+        </h2>
+
+        <p class="section-intro">
+          Une seule mission ouverte à la fois. L'objectif est clair :
+          réunir 149 € pour financer un BAD Scan offert à une association.
+        </p>
+
+        <div class="mission-layout">
+          <article class="card mission">
+            <div class="mission__image">
+              <img
+                src="/assets/les-restos-du-coeurs.jpg"
+                alt="Association bénéficiaire de la mission BAD Impact"
+              />
+            </div>
+
+            <div class="mission__body">
+              <div class="mission__topline">
+                <span class="mission__status">Collecte en cours</span>
+                <strong>Mission #001</strong>
+              </div>
+
+              <h3>Votre contribution finance le premier BAD Impact</h3>
+
+              <p class="mission__association">
+                Association proposée : LES RESTOS DU CŒUR DE SEINE-MARITIME (ROUEN)
+              </p>
+
+              <p class="mission__description">
+                Cette première mission permettra d'offrir gratuitement un <strong>BAD Scan</strong> stratégique aux Restos du Cœur de Seine-Maritime 
+                afin d'identifier des pistes d'amélioration concrètes et directement applicables.
+                <br /><br />
+                <strong>L'association en chiffres</strong><br />
+                👥 1 029 bénévoles <br/>
+                🍽️ 2 338 398 repas distribués (2024/2025)
+              </p>
+
+              <div class="progress">
+                <div class="progress__labels">
+                  <span>
+                    <strong id="mission-collected">0 €</strong>
+                    collectés
+                  </span>
+
+                  <span>
+                    Objectif :
+                    <strong>149 €</strong>
+                  </span>
+                </div>
+
+                <div
+                  class="progress__track"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="149"
+                  aria-valuenow="0"
+                >
+                  <div
+                    class="progress__bar"
+                    id="mission-progress"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="mission__stats">
+                <span id="mission-percentage">0 % financé</span>
+                <span id="mission-contributors">0 contributeur</span>
+                <span>Montant libre</span>
+              </div>
+
+              <div class="mission__actions">
+                <a
+                  class="button"
+                  href="https://donate.stripe.com/7sY5kDbvo2Hp1FDfL8afS00"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Contribuer à la mission
+                </a>
+
+                <a class="button button--secondary" target="_blank" href="https://www.restosducoeur.org/associations-departementales/les-restos-du-coeur-de-seine-maritime-rouen/">
+                  Site officiel ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- FONCTIONNEMENT -->
+          <aside class="card steps" id="fonctionnement">
+            <h3>
+              Comment
+              <span class="orange">ça fonctionne ?</span>
+            </h3>
+
+            <ol class="steps__list">
+              <li class="step">
+                <div class="step__number">01</div>
+
+                <div>
+                  <h4>La communauté contribue</h4>
+
+                  <p>
+                    Chacun participe librement selon ses moyens.
+                    Les contributions sont réunies sur une mission unique.
+                  </p>
+                </div>
+              </li>
+
+              <li class="step">
+                <div class="step__number">02</div>
+
+                <div>
+                  <h4>La mission atteint 149 €</h4>
+
+                  <p>
+                    Une fois l'objectif atteint, la collecte est clôturée
+                    et le BAD Scan est planifié avec l'association.
+                  </p>
+                </div>
+              </li>
+
+              <li class="step">
+                <div class="step__number">03</div>
+
+                <div>
+                  <h4>Web3Invest réalise le diagnostic</h4>
+
+                  <p>
+                    L'association bénéficie du même niveau d'analyse et
+                    de préparation qu'un client Web3Invest.
+                  </p>
+                </div>
+              </li>
+
+              <li class="step">
+                <div class="step__number">04</div>
+
+                <div>
+                  <h4>Les résultats sont documentés</h4>
+
+                  <p>
+                    Un rapport est produit et les enseignements non
+                    confidentiels peuvent être partagés à la communauté.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </aside>
+
+          <div class="card steps" id="informations" style="width: 100%; grid-column: 1/-1; padding: 1rem">
+          <em style="font-size: x-small;">
+            ℹ️ Cette initiative est portée par <strong>Web3Invest</strong> et n'est pas organisée par l'association proposée. Le <strong>BAD Scan</strong> sera proposé à l'association présentée sur cette page dès que l'objectif de collecte sera atteint.<br />
+            En cas de refus de l'association, d'impossibilité de réaliser la mission ou de toute autre circonstance indépendante de la volonté de Web3Invest, le financement sera intégralement affecté à une mission similaire au profit d'une autre association d'intérêt général, sans coût supplémentaire pour les contributeurs.
+          </em>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RAPPORTS -->
+    <section class="reports" id="reports">
+      <div class="container">
+        <p class="eyebrow">Transparence et suivi</p>
+
+        <h2 class="section-title">
+          Les rapports
+          <span class="orange">BAD Impact.</span>
+        </h2>
+
+        <p class="section-intro">
+          Chaque mission terminée rejoint progressivement cette bibliothèque
+          publique d'actions, de diagnostics et d'enseignements.
+        </p>
+
+        <div class="reports__grid">
+          <article class="card report">
+            <span class="report__date">MISSION #001</span>
+
+            <h3>Premier BAD Scan associatif</h3>
+
+            <p>
+              Le rapport PDF et les slides seront publiés après réalisation
+              de la première mission et validation de l'association.
+            </p>
+
+            <div class="report__links">
+              <span class="text-link">À venir</span>
+            </div>
+          </article>
+
+          <article class="card report">
+            <span class="report__date">FORMAT PDF</span>
+
+            <h3>Diagnostic structuré</h3>
+
+            <p>
+              Contexte, constats, points de blocage, opportunités,
+              priorités et recommandations concrètes.
+            </p>
+
+            <div class="report__links">
+              <span class="text-link">Modèle en préparation</span>
+            </div>
+          </article>
+
+          <article class="card report">
+            <span class="report__date">FORMAT LINKEDIN</span>
+
+            <h3>Slides publiques</h3>
+
+            <p>
+              Une version synthétique et partageable pour transmettre
+              les apprentissages sans dévoiler les informations sensibles.
+            </p>
+
+            <div class="report__links">
+              <span class="text-link">Publication après mission</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPES -->
+    <section class="principles">
+      <div class="container">
+        <div class="card principles__grid">
+          <article class="principle">
+            <div class="principle__icon">◎</div>
+
+            <h3>Transparence</h3>
+
+            <p>
+              Objectifs, montants collectés, missions réalisées et résultats
+              sont suivis publiquement.
+            </p>
+          </article>
+
+          <article class="principle">
+            <div class="principle__icon">✓</div>
+
+            <h3>Confiance</h3>
+
+            <p>
+              Chaque contribution est affectée à une mission identifiable
+              et produit une action concrète.
+            </p>
+          </article>
+
+          <article class="principle">
+            <div class="principle__icon">◇</div>
+
+            <h3>Expertise</h3>
+
+            <p>
+              Les associations bénéficient d'un véritable diagnostic
+              stratégique, pas d'une prestation allégée.
+            </p>
+          </article>
+
+          <article class="principle">
+            <div class="principle__icon">⌖</div>
+
+            <h3>Ancrage local</h3>
+
+            <p>
+              Les premières missions se concentrent sur Rouen,
+              la Seine-Maritime et la Normandie.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="final-cta">
+      <div class="container">
+        <div class="card final-cta__inner">
+          <div>
+            <p class="eyebrow">Chaque contribution compte</p>
+
+            <h2>
+              Ensemble, transformons la générosité
+              en <span class="orange">actions concrètes.</span>
+            </h2>
+
+            <p>
+              Une communauté. Une mission. Une association.
+              Un impact réel et documenté.
+            </p>
+          </div>
+
+          <div class="final-cta__actions">
+            <a
+              class="button"
+              href="https://donate.stripe.com/7sY5kDbvo2Hp1FDfL8afS00"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Soutenir la mission #001
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <div class="card final-cta__inner">
+          <div>
+            <p class="eyebrow">PROGRAMME EN CONSTRUCTION</p>
+
+            <h3>
+              BAD Impact est lancé, construisons-le <span class="orange">ENSEMBLE</span>.
+            </h3>
+
+            <p>
+              BAD Impact évoluera avec sa communauté. <br />
+              Une idée. Une association. Une mission. <a class="navbar__link" href="mailto:contact@web3invest.fr">Parlons-en</a>.
+            </p>
+          </div>
+          <div class="final-cta__actions">
+            <a
+              class="button"
+              href="mailto:contact@web3invest.fr?subject=Proposition%20de%20mission%20BAD%20Impact"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📩 Proposer une mission
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer__inner">
+
+      <div>&nbsp;</div>
+
+      <div class="footer__copy">
+        <span>© Web3Invest — Analyser · Automatiser · Améliorer</span>
+        <br />
+        <em>Ensemble, cultivons le web3</em>
+      </div>
+
+      <div>&nbsp;</div>
+
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const toggle = document.querySelector(".navbar__toggle");
+      const menu = document.querySelector(".navbar__links");
+
+      if (toggle && menu) {
+        toggle.addEventListener("click", () => {
+          const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+          toggle.setAttribute("aria-expanded", String(!isOpen));
+          menu.classList.toggle("is-open", !isOpen);
+        });
+
+        menu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            toggle.setAttribute("aria-expanded", "false");
+            menu.classList.remove("is-open");
+          });
+        });
+      }
+
+      /*
+       * Données MVP.
+       *
+       * Tu pourras remplacer ces valeurs par un fetch vers ton Worker :
+       *
+       * fetch("/api/bad-impact/missions/BAD-IMPACT-001")
+       *   .then(response => response.json())
+       *   .then(renderMission);
+       */
+
+      const mission = {
+        targetCents: 14900,
+        collectedCents: 0,
+        contributors: 0,
+        totalImpactCents: 0
+      };
+
+      const formatEuros = (cents) =>
+        new Intl.NumberFormat("fr-FR", {
+          style: "currency",
+          currency: "EUR",
+          maximumFractionDigits: 0
+        }).format(cents / 100);
+
+      const renderMission = (data) => {
+        const target = Math.max(data.targetCents, 1);
+        const percentage = Math.min(
+          100,
+          Math.round((data.collectedCents / target) * 100)
+        );
+
+        const collected = document.querySelector("#mission-collected");
+        const contributors = document.querySelector("#mission-contributors");
+        const percentageText = document.querySelector("#mission-percentage");
+        const progress = document.querySelector("#mission-progress");
+        const progressTrack = document.querySelector(
+          ".progress__track"
+        );
+
+        if (collected) {
+          collected.textContent = formatEuros(data.collectedCents);
+        }
+
+        if (contributors) {
+          contributors.textContent =
+            `${data.contributors} contributeur` +
+            (data.contributors > 1 ? "s" : "");
+        }
+
+        if (percentageText) {
+          percentageText.textContent = `${percentage} % financé`;
+        }
+
+        if (progress) {
+          progress.style.width = `${percentage}%`;
+        }
+
+        if (progressTrack) {
+          progressTrack.setAttribute(
+            "aria-valuenow",
+            String(data.collectedCents / 100)
+          );
+        }
+
+        const totalEuros = Math.floor(data.totalImpactCents / 100);
+        const digits = String(totalEuros).padStart(5, "0").slice(-5);
+        const counterDigits = document.querySelectorAll(".counter__digit");
+
+        counterDigits.forEach((element, index) => {
+          element.textContent = digits[index];
+        });
+
+        const counter = document.querySelector("#impact-counter");
+
+        if (counter) {
+          counter.setAttribute(
+            "aria-label",
+            `${totalEuros} euros collectés`
+          );
+        }
+      };
+
+      renderMission(mission);
+    })();
+  </script>
+</body>
+</html>
