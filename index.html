@@ -52,7 +52,353 @@
 </head>
 <body>
 
-  <img class="w3i-mascot" src="mascot_final.webp" alt="" aria-hidden="true">
+  <header class="site-header">
+  <nav class="navbar" aria-label="Navigation principale">
+    <!-- Remplacez le src par le chemin réel de votre logo -->
+    <a class="navbar__brand" href="/" aria-label="Web3Invest — Accueil">
+      <img
+        class="navbar__logo"
+        src="/assets/w3i-doctor-icon.png"
+        alt="Web3Invest"
+        width="128"
+        height="48"
+      />
+    </a>
+
+    <button
+      class="navbar__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+      aria-label="Ouvrir le menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="navbar__content" id="main-navigation">
+      <ul class="navbar__links">
+        <li>
+          <a class="navbar__link navbar__link--active" href="/">Accueil</a>
+        </li>
+
+        <li>
+          <a class="navbar__link" href="/bad-impact.html">
+            BAD Impact
+          </a>
+        </li>
+      </ul>
+
+      <a
+        class="navbar__cta"
+        href="https://calendly.com/cedric-badmington"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span aria-hidden="true">📅</span>
+        Réserver un RDV
+      </a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  :root {
+    --w3i-bg: #070b0f;
+    --w3i-bg-soft: rgba(7, 11, 15, 0.94);
+    --w3i-text: #f5f5f5;
+    --w3i-muted: #a5a9ae;
+    --w3i-orange: #f5820b;
+    --w3i-orange-light: #ff9c2b;
+    --w3i-border: rgba(255, 255, 255, 0.08);
+    --w3i-container: 1480px;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 11, 15, 0.98),
+        rgba(7, 11, 15, 0.92)
+      );
+    border-bottom: 1px solid var(--w3i-border);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .navbar {
+    width: min(100% - 40px, var(--w3i-container));
+    min-height: 74px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .navbar__brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .navbar__logo {
+    display: block;
+    width: auto;
+    max-width: 138px;
+    height: 46px;
+    object-fit: contain;
+  }
+
+  .navbar__content {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .navbar__links {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(24px, 3vw, 58px);
+    list-style: none;
+  }
+
+  .navbar__link {
+    position: relative;
+    display: inline-flex;
+    min-height: 74px;
+    align-items: center;
+    color: var(--w3i-text);
+    font-family: Inter, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      color 180ms ease,
+      opacity 180ms ease;
+  }
+
+  .navbar__link::after {
+    content: "";
+    position: absolute;
+    right: 50%;
+    bottom: 8px;
+    left: 50%;
+    height: 2px;
+    background: var(--w3i-orange);
+    border-radius: 999px;
+    transition:
+      right 180ms ease,
+      left 180ms ease;
+  }
+
+  .navbar__link:hover,
+  .navbar__link:focus-visible,
+  .navbar__link--active {
+    color: var(--w3i-orange-light);
+  }
+
+  .navbar__link:hover::after,
+  .navbar__link:focus-visible::after,
+  .navbar__link--active::after {
+    right: 0;
+    left: 0;
+  }
+
+  .navbar__cta {
+    display: inline-flex;
+    min-width: 128px;
+    min-height: 42px;
+    padding: 0 22px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid var(--w3i-orange);
+    border-radius: 6px;
+    color: var(--w3i-orange-light);
+    background: rgba(245, 130, 11, 0.04);
+    font-family: Inter, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      color 180ms ease,
+      background 180ms ease,
+      box-shadow 180ms ease,
+      transform 180ms ease;
+  }
+
+  .navbar__cta:hover,
+  .navbar__cta:focus-visible {
+    color: #090b0d;
+    background: var(--w3i-orange);
+    box-shadow: 0 0 28px rgba(245, 130, 11, 0.25);
+    transform: translateY(-1px);
+  }
+
+  .navbar__toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 9px;
+    border: 1px solid var(--w3i-border);
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .navbar__toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-block: 5px;
+    background: var(--w3i-text);
+    border-radius: 999px;
+    transition:
+      transform 180ms ease,
+      opacity 180ms ease;
+  }
+
+  .navbar__toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navbar__toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  @media (max-width: 980px) {
+    .navbar {
+      min-height: 68px;
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+    }
+
+    .navbar__toggle {
+      display: block;
+    }
+
+    .navbar__content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      display: none;
+      padding: 20px;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      background: var(--w3i-bg-soft);
+      border-bottom: 1px solid var(--w3i-border);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.42);
+    }
+
+    .navbar__content.is-open {
+      display: grid;
+    }
+
+    .navbar__links {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+    }
+
+    .navbar__link {
+      min-height: 46px;
+      justify-content: center;
+      border-radius: 6px;
+    }
+
+    .navbar__link::after {
+      bottom: 2px;
+    }
+
+    .navbar__cta {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .navbar {
+      width: min(100% - 24px, var(--w3i-container));
+    }
+
+    .navbar__logo {
+      max-width: 112px;
+      height: 40px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar__link,
+    .navbar__link::after,
+    .navbar__cta,
+    .navbar__toggle span {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const toggle = document.querySelector(".navbar__toggle");
+    const menu = document.querySelector(".navbar__content");
+
+    if (!toggle || !menu) return;
+
+    const closeMenu = () => {
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Ouvrir le menu");
+      menu.classList.remove("is-open");
+    };
+
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+      toggle.setAttribute(
+        "aria-label",
+        isOpen ? "Ouvrir le menu" : "Fermer le menu"
+      );
+      menu.classList.toggle("is-open", !isOpen);
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 980) closeMenu();
+    });
+  })();
+</script>
 
   <main class="w3i-page">
     <p class="w3i-eyebrow">AI Agency Operating System</p>
@@ -241,10 +587,10 @@
 
     <div class="w3i-ctas">
       <a class="w3i-btn w3i-btn-primary" href="mailto:contact@web3invest.fr">🖂 Nous contacter</a>
-      <a class="w3i-btn w3i-btn-secondary" href="https://doctor.web3invest.fr" target="_blank" rel="noopener">🤖 Diagnostic IA gratuit →</a>
+      <a class="w3i-btn w3i-btn-secondary" href="https://doctor.web3invest.fr" target="_blank" rel="noopener">🤖 Démarrez votre diagnostic IA avec Doctor w3i →</a>
     </div>
 
-    <p class="w3i-footer">
+    <p class="w3i-footer" style="color: #a7adb4">
       <span>© WEB3INVEST — ANALYSER · AUTOMATISER · AMÉLIORER</span>
       <br />
       <em>Ensemble, cultivons le web3</em>
